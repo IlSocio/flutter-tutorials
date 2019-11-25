@@ -8,4 +8,10 @@ class BaseModel extends ChangeNotifier {
     _busy = value;
     notifyListeners();
   }
+
+  @override
+  void dispose() {
+    print('I have been disposed: ' + this.runtimeType.toString());
+    super.dispose();
+  }
 }

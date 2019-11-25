@@ -2,44 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class BaseWidget<T extends ChangeNotifier> extends StatefulWidget {
-  final Widget Function(BuildContext context, T model, Widget child) builder;
-  final T model;
+  final Widget Function(BuildContext context, T viewModel, Widget child)
+      builder;
+  final T viewModel;
   final Widget child;
-  final Function(T) onModelReady;
+  final Function(T)
+      onViewModelReady; // TODO: This function should be moved to the ViewModel... VM should initialize itself
 
   BaseWidget({
     Key key,
     this.builder,
-    this.model,
+    this.viewModel,
     this.child,
-    this.onModelReady,
+    this.onViewModelReady,
   }) : super(key: key);
 
   _BaseWidgetState<T> createState() => _BaseWidgetState<T>();
 }
 
 class _BaseWidgetState<T extends ChangeNotifier> extends State<BaseWidget<T>> {
-  T model;
+  T viewModel;
 
   @override
   void initState() {
-    model = widget.model;
-
-    if (widget.onModelReady != null) {
-      widget.onModelReady(model);
+    viewModel = widget.viewModel;
+    if (widget.onViewModelReady != null) {
+      widget.onViewModelReady(viewModel);
     }
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<T>(
-      builder: (context) => model,
+      builder: (context) => viewModel,
       child: Consumer<T>(
         builder: widget.builder,
         child: widget.child,
       ),
     );
   }
+
+  // NOTE: Provider will take care of call viewModel.dispose()
 }

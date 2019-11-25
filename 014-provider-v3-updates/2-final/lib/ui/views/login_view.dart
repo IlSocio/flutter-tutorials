@@ -18,7 +18,7 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return BaseWidget<LoginViewModel>(
-      model: LoginViewModel(authenticationService: Provider.of(context)),
+      viewModel: LoginViewModel(authenticationService: Provider.of(context)),
       child: LoginHeader(controller: _controller),
       builder: (context, model, child) => Scaffold(
           backgroundColor: backgroundColor,

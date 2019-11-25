@@ -35,38 +35,45 @@ class HomeView extends StatelessWidget {
 
   Widget _getStatsUi(HomeViewModel model, BuildContext context) {
     return Column(children: [
-       WatcherToolbar(title: 'SKELETON-WATCHER'),
-        _getHeightContainer(
-          context: context,
-          height: screenHeight(context, dividedBy: 2, decreasedBy: toolbarHeight),
-          child: StatsCounter(
-            size: screenHeight(context, dividedBy: 2, decreasedBy: toolbarHeight) - 60, // 60 margins
-            count: model.appStats.errorCount,
-            title: 'Errors',
-            titleColor: Colors.red,
-          ),
+      WatcherToolbar(title: 'SKELETON-WATCHER'),
+      _getHeightContainer(
+        context: context,
+        height: screenHeight(context, dividedBy: 2, decreasedBy: toolbarHeight),
+        child: StatsCounter(
+          size:
+              screenHeight(context, dividedBy: 2, decreasedBy: toolbarHeight) -
+                  60, // 60 margins
+          count: model.appStats.errorCount,
+          title: 'Errors',
+          titleColor: Colors.red,
         ),
-         _getHeightContainer(
+      ),
+      _getHeightContainer(
           context: context,
-          height:screenHeight(context, dividedBy: 3, decreasedBy: toolbarHeight),
+          height:
+              screenHeight(context, dividedBy: 3, decreasedBy: toolbarHeight),
           child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              StatsCounter(
-                size: screenHeight(context, dividedBy: 3, decreasedBy: toolbarHeight) - 60,
-                count: model.appStats.userCount,
-                title: 'Users',
-              ),
-              StatsCounter(
-                size: screenHeight(context,dividedBy: 3, decreasedBy: toolbarHeight) - 60,
-                count: model.appStats.appCount,
-                title: 'Apps Created',
-              )
-          ])
-         ),
-         _getHeightContainer(
-          height:screenHeight(context, dividedBy: 6, decreasedBy: toolbarHeight),
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                StatsCounter(
+                  size: screenHeight(context,
+                          dividedBy: 3, decreasedBy: toolbarHeight) -
+                      60,
+                  count: model.appStats.userCount,
+                  title: 'Users',
+                ),
+                StatsCounter(
+                  size: screenHeight(context,
+                          dividedBy: 3, decreasedBy: toolbarHeight) -
+                      60,
+                  count: model.appStats.appCount,
+                  title: 'Apps Created',
+                )
+              ])),
+      _getHeightContainer(
+          height:
+              screenHeight(context, dividedBy: 6, decreasedBy: toolbarHeight),
           child: IndicatorButton(
             title: 'FEEDBACK',
             onTap: () {
@@ -87,7 +94,7 @@ class HomeView extends StatelessWidget {
         height: height,
         alignment: Alignment.center,
         margin: EdgeInsets.symmetric(horizontal: 20.0),
-        decoration: hasTopStroke? topLineBorderDecoration : null,
+        decoration: hasTopStroke ? topLineBorderDecoration : null,
         child: child);
   }
 }

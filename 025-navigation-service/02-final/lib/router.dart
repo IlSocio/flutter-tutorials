@@ -4,13 +4,15 @@ import 'package:nav_service/constants/route_paths.dart' as routes;
 import 'package:nav_service/views/home_view.dart';
 import 'package:nav_service/views/login_view.dart';
 
+// TODO: Pass parameters to ViewModel...
+
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case routes.LoginRoute:
       return MaterialPageRoute(builder: (context) => LoginView());
     case routes.HomeRoute:
       var userName = settings.arguments as String;
-      return MaterialPageRoute(
+      return MaterialPageRoute<String>(
           builder: (context) => HomeView(userName: userName));
     default:
       return MaterialPageRoute(

@@ -17,10 +17,4 @@ class CommentsModel extends BaseModel {
     comments = await _api.getCommentsForPost(postId);
     setBusy(false);
   }
-
-  @override
-  void dispose() {
-    print('I have been disposed!!');
-    super.dispose();
-  }
 }

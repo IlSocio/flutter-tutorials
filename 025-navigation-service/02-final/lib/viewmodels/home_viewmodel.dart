@@ -12,7 +12,8 @@ class HomeViewModel extends BaseModel {
     if (!success) {
       setErrorMessage('Error has occured during sign out');
     } else {
-      _navigationService.goBack();
+      // _navigationService.navigateBack();
+      _navigationService.navigateBackWithResult<String>("aaa");
     }
   }
 }

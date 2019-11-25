@@ -12,8 +12,9 @@ class Posts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseWidget<PostsModel>(
-        model: PostsModel(api: Provider.of(context)),
-        onModelReady: (model) => model.getPosts(Provider.of<User>(context).id),
+        viewModel: PostsModel(api: Provider.of(context)),
+        onViewModelReady: (model) =>
+            model.getPosts(Provider.of<User>(context).id),
         builder: (context, model, child) => model.busy
             ? Center(
                 child: CircularProgressIndicator(),
@@ -21,15 +22,15 @@ class Posts extends StatelessWidget {
             : ListView.builder(
                 itemCount: model.posts.length,
                 itemBuilder: (context, index) => PostListItem(
-                      post: model.posts[index],
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          RoutePaths.Post,
-                          arguments: model.posts[index],
-                        );
-                      },
-                    ),
+                  post: model.posts[index],
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      RoutePaths.Post,
+                      arguments: model.posts[index],
+                    );
+                  },
+                ),
               ));
   }
 }

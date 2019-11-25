@@ -18,8 +18,8 @@ class LoginView extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: GestureDetector(
                 onTap: () {
-                  model.login(success: true);
-              },
+                  model.login();
+                },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
@@ -46,7 +46,9 @@ class LoginView extends StatelessWidget {
                                   fontWeight: FontWeight.w800,
                                   color: Colors.white,
                                   fontSize: 30))
-                          : CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Colors.white),),
+                          : CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation(Colors.white),
+                            ),
                       decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(10),
